@@ -1,6 +1,6 @@
 
-const {expect} =require("chai") ;
-const {Optional} =require("declarative-optional") ;
+
+import {Optional} from "declarative-optional" ;
 
 describe('Optional with array', () => {
 
@@ -10,7 +10,7 @@ it("optional works fine with map function against an array",()=>{
         .stream()
         .map(i=>i+1);
 
-    expect(res).deep.to.equal([24,46]);
+    expect(res).toEqual([24,46]);
 })
 
 it("optional works fine with map function against an empty array",()=>{
@@ -20,7 +20,7 @@ it("optional works fine with map function against an empty array",()=>{
         .stream()
         .map(i=>i+1);
 
-    expect(res).deep.to.equal([]);
+    expect(res).toEqual([]);
 })
 it("optional works fine with map function against an null",()=>{
 
@@ -29,7 +29,7 @@ it("optional works fine with map function against an null",()=>{
         .stream()
         .map(i=>i+1);
 
-    expect(res).deep.to.equal([]);
+    expect(res).toEqual([]);
 })
 it("optional works fine with map function against an single element",()=>{
 
@@ -38,7 +38,7 @@ it("optional works fine with map function against an single element",()=>{
         .stream()
         .map(i=>i+1);
 
-    expect(res).deep.to.equal([24]);
+    expect(res).toEqual([24]);
 })
 
 it("optional works fine with flatten ",()=>{
@@ -49,7 +49,7 @@ it("optional works fine with flatten ",()=>{
     const res  = Optional.of(emailForUserId(12))
         .map(isAdmin)
         .flatten()
-    expect(res.get()).to.equal("admin")
+    expect(res.get()).toEqual("admin")
 })
 it("optional works fine with flatten for super hero",()=>{
 
@@ -63,7 +63,7 @@ it("optional works fine with flatten for super hero",()=>{
         .flatten()
         .get()
 
-    expect(res).deep.to.equal(['web-shooters','syntheitic-webbing'])
+    expect(res).toEqual(['web-shooters','syntheitic-webbing'])
 })
 it("optional works fine with flatmap ",()=>{
 
@@ -76,7 +76,7 @@ it("optional works fine with flatmap ",()=>{
     let val = res.get();
     console.log(val)
 
-    expect(val).to.equal("admin")
+    expect(val).toEqual("admin")
 })
 
 

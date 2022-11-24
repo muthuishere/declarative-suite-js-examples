@@ -1,7 +1,6 @@
 // @ts-nocheck
-const {expect} =require("chai") ;
-const {Optional} =require("declarative-optional") ;
 
+import {Optional} from "declarative-optional" ;
 
 function getFromUserService({username,password}){
     return new Promise((function (resolve) {
@@ -38,9 +37,8 @@ it("optional chained and ended with toAsync to return another optional",async ()
         .toAsync()
 
 
-    expect(result).not.to.be.null
-    expect(result).to.be.an.instanceof(Optional)
-    expect(result.get()).to.equal("adminPage")
+    expect(result).not.toBeNull()
+    expect(result.get()).toEqual("adminPage")
 
 
 })
@@ -55,8 +53,8 @@ it("optional chained and ended with getAsync to return another value",async () =
         .getAsync()
 
 
-    expect(result).not.to.be.null
-    expect(result).to.equal("adminPage")
+        expect(result).not.toBeNull()
+    expect(result).toEqual("adminPage")
 
 
 })
@@ -75,7 +73,7 @@ it("optional chained and ended with toAsync can further be evaluated with ifPres
         .then(page=>{
 
             page.ifPresentOrElse((result)=>{
-                expect(result).to.equal("adminPage")
+                expect(result).toEqual("adminPage")
                 done()
             },()=>{
                 done("Failed")
@@ -96,7 +94,7 @@ it("optional chained and ended with toAsync should act appropriate even if initi
         .then(page=>{
 
             page.ifPresentOrElse((result)=>{
-                expect(result).to.equal("adminPage")
+                expect(result).toEqual("adminPage")
                 done("Validation should Fail")
             },()=>{
 
@@ -141,7 +139,7 @@ it("optional chained with  toAsync should work fine for non async operations as 
         .map(i => i + 1)
         .toAsync()
 
-    expect(res.get()).to.equal(46)
+    expect(res.get()).toEqual(46)
 })
 
 it("optional started with promise should work well ",async () => {
@@ -154,7 +152,7 @@ it("optional started with promise should work well ",async () => {
         .map(i => i + 1)
         .toAsync()
 
-    expect(res.get()).to.equal(46)
+    expect(res.get()).toEqual(46)
 })
 
 it("async optional should merge with other async optional as well ",async () => {
@@ -167,9 +165,8 @@ it("async optional should merge with other async optional as well ",async () => 
         .toAsync()
 
 
-    expect(result).not.to.be.null
-    expect(result).to.be.an.instanceof(Optional)
-    expect(result.get()).deep.to.equal([
+
+    expect(result.get()).toEqual([
         {id:"1",name:"Macbook Pro 2017" },
         {id:"2",name:"Dell XPS 2021" }
     ])
